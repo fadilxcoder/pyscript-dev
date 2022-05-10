@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <py-env>
+            - numpy
+            - matplotlib
+        </py-env>
+    </head>
+    <body style="margin: 0px 25px;">
+            <pre>
+            <py-script> 
+
+print('Hello, World!')
+
+</py-script> 
+            <p>
+                <b>Today is</b>
+                <u><label id='today'></label></u>
+            </p>
+
+            <div id="pi" class="alert alert-primary"></div>
+            <py-script>
+
+import datetime as dt
+
+pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
+
+</py-script>
+            <div id="version"></div>
+            <py-script>
+    
+import sys
+
+pyscript.write('version', sys.version)
+
+</py-script>
+            <div id="bar-chart"></div>
+            <py-script output="bar-chart">
+
+import matplotlib.pyplot as pltx
+
+x = ['Nuclear', 'Hydro', 'Gas', 'Oil', 'Coal', 'Biofuel']
+energy = [5, 6, 15, 22, 24, 8]
+
+x_pos = [i for i, _ in enumerate(x)]
+
+pltx.bar(x_pos, energy, color='green')
+pltx.xlabel("Energy Source")
+pltx.ylabel("Energy Output (GJ)")
+pltx.title("Energy output from various fuel sources")
+
+pltx.xticks(x_pos, x)
+
+pltx.show()
+
+pltx
+</py-script>        </pre>
+    </body>
+</html>
